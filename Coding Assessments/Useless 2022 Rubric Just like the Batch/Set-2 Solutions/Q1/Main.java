@@ -36,5 +36,7 @@ public class Main {
 
         System.out.println("Dot product of the two vectors is: " + Vector.computeDotProduct(v1, v2));
         System.out.println("Cross product of the two vectors is: " + Vector.computeCrossProduct(v1, v2));
+
+        sc.close();
     }
 }
