@@ -47,12 +47,20 @@ public class Main {
         students.sort(new StudentJointCriterionComparator());
 
         // now we make the first 3 students onCampus
-        for (int i = 0; i < 3; i++) {
+        for (int i = 2; i < 5; i++) {
             students.get(i).setResidential_status("onCampus");
         }
 
         for (Student student : students) {
             System.out.println(student.getFirstName() + " " + student.getLastName() + " " + student.getResidential_status());
         }
+
+        System.out.println();
+
+        s1.goToWork();
+        s2.goToWork();
+        s3.goToWork();
+        s4.goToWork();
+        s5.goToWork();
     }
 }
