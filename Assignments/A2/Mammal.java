@@ -6,9 +6,12 @@ public class Mammal extends Animal {
         super(name, description, noise, category);
     }
 
-    @Override
     public void makeNoise() {
-        String noise = getNoise();
-        System.out.println(noise);
+        switch (getName()) {
+            case "Lion", "lion", "Tiger", "tiger" -> System.out.println("ROAR");
+            case "Dog", "dog" -> System.out.println("BARK");
+            case "Rat", "rat" -> System.out.println("SQUEAK");
+            default -> System.out.println("GROWL");
+        }
     }
 }
