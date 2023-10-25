@@ -29,7 +29,7 @@ public class Main {
                 System.out.println("logged in as admin: ");
                 System.out.println();
 
-                while (true) {
+                outermost: while (true) {
                     System.out.println("Admin Menu:");
                     System.out.println("1. Manage Attractions");
                     System.out.println("2. Manage Animals");
@@ -51,9 +51,9 @@ public class Main {
                             // manage attractions
                             System.out.println("Manage Attractions");
 
-                            while (true) {
+                            outer: while (true) {
                                 System.out.println("1. Add attraction");
-                                System.out.println("2. View attraction");
+                                System.out.println("2. View attractions");
                                 System.out.println("3. Modify attraction");
                                 System.out.println("4. Remove attraction");
                                 System.out.println("5. Back");
@@ -103,7 +103,7 @@ public class Main {
 
                                     case 5 -> {
                                         System.out.println();
-                                        break; // exit the attraction menu (break is necessary here, ignore the compiler warning)
+                                        break outer; // exit the attraction menu
                                     }
 
                                     default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -114,11 +114,12 @@ public class Main {
                         case 2 -> {
                             System.out.println("Manage Animals:");
 
-                            while (true) {
+                            outer: while (true) {
                                 System.out.println("1. Add Animal");
                                 System.out.println("2. Update Animal Details");
                                 System.out.println("3. Remove Animal");
-                                System.out.println("4. Back");
+                                System.out.println("4. View Animals");
+                                System.out.println("5. Back");
 
                                 System.out.println();
                                 System.out.print("Enter your choice: ");
@@ -163,8 +164,13 @@ public class Main {
                                     }
 
                                     case 4 -> {
+                                        admin.viewAnimals();
                                         System.out.println();
-                                        break; // exit the animal menu (break is necessary here, ignore the compiler warning)
+                                    }
+
+                                    case 5 -> {
+                                        System.out.println();
+                                        break outer; // exit the animal menu
                                     }
 
                                     default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -200,7 +206,7 @@ public class Main {
                         case 4 -> {
                             System.out.println("Set Discounts:");
 
-                            while (true) {
+                            outer: while (true) {
                                 System.out.println("1. Add discount");
                                 System.out.println("2. Modify discounts");
                                 System.out.println("3. Remove discount");
@@ -262,7 +268,7 @@ public class Main {
 
                                     case 4 -> {
                                         System.out.println();
-                                        break; // exit the discount menu (break is necessary here, ignore the compiler warning)
+                                        break outer; // exit the discount menu
                                     }
 
                                     default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -275,7 +281,7 @@ public class Main {
 
                             System.out.println("Set Special Deal:");
 
-                            while (true) {
+                            outer: while (true) {
                                 System.out.println("1. Add special deal");
                                 System.out.println("2. Modify special deal");
                                 System.out.println("3. Remove special deal");
@@ -340,7 +346,7 @@ public class Main {
 
                                     case 4 -> {
                                         System.out.println();
-                                        break; // exit the special deal menu (break is necessary here, ignore the compiler warning)
+                                        break outer; // exit the special deal menu
                                     }
 
                                     default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -369,7 +375,7 @@ public class Main {
                             System.out.println();
                             System.out.println("Logged out");
                             System.out.println();
-                            break; // exit the admin menu (break is necessary here, ignore the compiler warning)
+                            break outermost; // exit the admin menu
                         }
 
                         default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -399,14 +405,16 @@ public class Main {
                         int age = scanner.nextInt();
                         scanner.nextLine();
                         System.out.print("Enter your phone number: ");
-                        int phoneNumber = scanner.nextInt();
-                        scanner.nextLine();
+                        String phoneNumber = scanner.nextLine();
                         System.out.print("Enter your email: ");
                         String email = scanner.nextLine();
                         System.out.print("Enter your password: ");
                         String password = scanner.nextLine();
+                        System.out.print("Enter your balance: ");
+                        double balance = scanner.nextFloat();
 
-                        zoo.addVisitor(name, age, phoneNumber, 100, email, password);
+                        zoo.addVisitor(name, age, phoneNumber, balance, email, password);
+                        zoo.setVisitorCount(zoo.getVisitorCount() + 1);
                         System.out.println("Visitor added successfully.");
                         System.out.println();
                     }
@@ -430,7 +438,7 @@ public class Main {
                         System.out.println();
                         System.out.println("Visitor menu:");
 
-                        while (true) {
+                        outer: while (true) {
                             System.out.println("1. Explore the Zoo");
                             System.out.println("2. Buy Membership");
                             System.out.println("3. Buy tickets");
@@ -453,7 +461,7 @@ public class Main {
 
                                     System.out.println("Explore the Zoo:");
 
-                                    while (true) {
+                                    outer1: while (true) {
                                         System.out.println("1. View attractions");
                                         System.out.println("2. View animals");
                                         System.out.println("3. Back");
@@ -479,7 +487,7 @@ public class Main {
 
                                             case 3 -> {
                                                 System.out.println();
-                                                break; // exit the explore menu (break is necessary here, ignore the compiler warning)
+                                                break outer1; // exit the explore menu
                                             }
                                         }
                                     }
@@ -537,7 +545,7 @@ public class Main {
                                 case 6 -> {
                                     System.out.print("Which animal would you like to visit: ");
                                     String animalName = scanner.nextLine();
-                                    System.out.print("Enter action (fead/read): ");
+                                    System.out.print("Enter action (feed/read): ");
                                     String action = scanner.nextLine();
 
                                     if (action.equals("feed")) {
@@ -572,7 +580,7 @@ public class Main {
 
                                 case 9 -> {
                                     System.out.println();
-                                    break; // exit the visitor menu (break is necessary here, ignore the compiler warning)
+                                    break outer; // exit the visitor menu
                                 }
 
                                 default -> System.out.println("Invalid choice. Please select a valid option.");
@@ -604,5 +612,3 @@ public class Main {
         scanner.close();
     }
 }
-
-
