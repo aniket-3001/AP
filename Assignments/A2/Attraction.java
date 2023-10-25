@@ -62,9 +62,9 @@ public class Attraction {
     public String toString() {
         String status = isOpen ? "open" : "closed";
         return "Attraction Information:" +
-                "\nID: " + id +
+                "\nID: " + getId() +
                 "\nName: " + name +
-                "\nDescription: " + description +
+                "\nDescription: " + getDescription() +
                 "\nStatus: " + status +
                 "\nFixed Ticket Price: " + fixedTicketPrice;
     }
