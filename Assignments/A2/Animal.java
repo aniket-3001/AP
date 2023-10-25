@@ -21,10 +21,6 @@ public abstract class Animal {
         return description;
     }
 
-    public String getNoise() {
-        return noise;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -38,7 +34,7 @@ public abstract class Animal {
     public String toString() {
         return "Animal Information:" +
                 "\nName: " + name +
-                "\nCategory: " + category +
+                "\nCategory: " + getCategory() +
                 "\nDescription: " + description +
                 "\nNoise: " + noise;
     }
