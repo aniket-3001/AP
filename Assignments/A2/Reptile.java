@@ -5,9 +5,7 @@ public class Reptile extends Animal {
         super(name, description, noise, category);
     }
 
-    @Override
     public void makeNoise() {
-        String noise = getNoise();
-        System.out.println(noise);
+        System.out.println("HISS");
     }
 }
